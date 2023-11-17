@@ -7,6 +7,7 @@ import orderRoute from './routes/order.route.js';
 import messageRoute from './routes/message.route.js';
 import gigRoute from './routes/gig.route.js';
 import conversationRoute from './routes/conversation.route.js';
+import authRoute from './routes/auth.route.js';
 dotenv.config();
 
 mongoose
@@ -20,12 +21,15 @@ mongoose
 
 const app = express();
 
+app.use(express.json());
+
 app.use('/api/users', userRoute);
 app.use('/api/reviews', reviewRoute);
 app.use('/api/orders', orderRoute);
 app.use('/api/messages', messageRoute);
 app.use('/api/gigs', gigRoute);
 app.use('/api/conversations', conversationRoute);
+app.use('/api/auth', authRoute);
 
 app.listen(8800, () => {
     console.log('Backend server is running!');
