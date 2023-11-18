@@ -35,3 +35,15 @@ export const login = async (req, res, next) => {
         next(error);
     }
 }
+
+export const logout = async (req, res, next) => {
+    try {
+        res.clearCookie('accessToken', {
+            sameSite: 'none',
+            secure: true
+        });
+        res.status(200).send('User has been logged out!');
+    } catch (error) {
+        next(error);
+    }
+}
